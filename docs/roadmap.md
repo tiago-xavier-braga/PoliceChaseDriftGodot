@@ -43,7 +43,8 @@ This project is vibe coded: items don't need a design note before code.
 
 ## Phase 5: Publish
 
-- [ ] Publish the web build (single-threaded export, so static hosts work)
+- [x] Publish the web build on GitHub Pages from the `gh-pages` branch (single-threaded export,
+  so static hosts work)
 
 ## Porting notes
 

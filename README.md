@@ -16,6 +16,12 @@ This is the Godot port of the Unity game Police Chase: Drift, built as a 3D web 
 > props and game over all work. See the [roadmap](docs/roadmap.md) for the phases and the open
 > decisions.
 
+## Play
+
+Play the web build in your browser on
+[GitHub Pages](https://tiago-xavier-braga.github.io/PoliceChaseDriftGodot/). The live build lives in
+the `gh-pages` branch and is updated by hand, so it can be behind `main`.
+
 ## How to play
 
 | Action | Keys |
@@ -59,6 +65,9 @@ godot --headless --export-release "Web" build/index.html
 
 `build/` is git-ignored. Thread support is off, so the build doesn't need cross-origin
 isolation headers and runs on static hosts such as GitHub Pages or itch.io.
+
+To publish, commit the contents of `build/` (plus an empty `.nojekyll`) to the `gh-pages`
+branch and push it. GitHub Pages serves that branch from its root.
 
 ## Porting from Unity
 
