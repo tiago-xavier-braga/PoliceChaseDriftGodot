@@ -1,0 +1,39 @@
+[gd_resource type="AnimationLibrary" format=3]
+
+[sub_resource type="Animation" id="Animation_1"]
+resource_name = "longitudinal_collision"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833, 0.1667, 0.25, 1, 1.3333, 1.6667, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2, 0, 0), Vector3(0, 0, 0), Vector3(-2, 0, 0), Vector3(2, 0, 0), Vector3(0, 0, 0), Vector3(-2, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2"]
+resource_name = "side_collision"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833, 0.1667, 0.25, 1, 1.3333, 1.6667, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 3), Vector3(0, 0, 0), Vector3(0, 0, -3), Vector3(0, 0, 3), Vector3(0, 0, 0), Vector3(0, 0, -3), Vector3(0, 0, 0)]
+}
+
+[resource]
+_data = {
+&"longitudinal_collision": SubResource("Animation_1"),
+&"side_collision": SubResource("Animation_2")
+}

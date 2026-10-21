@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/txt_kenney_car_kit.png" id="1"]
+
+[resource]
+resource_name = "mat_kenney_car_kit"
+albedo_texture = ExtResource("1")
+roughness = 0.8
