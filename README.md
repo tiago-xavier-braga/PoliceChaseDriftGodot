@@ -1,5 +1,14 @@
 # Police Chase: Drift
 
+<p align="center">
+  <img src="docs/images/screenshot_cutscene_chase.png" alt="Opening cutscene: a police officer chases a thief down the street" width="420">
+  <img src="docs/images/screenshot_cutscene_hit.png" alt="Opening cutscene: the player's sports car runs the officer over" width="420">
+  <img src="docs/images/screenshot_menu.png" alt="Main menu over the city: play, garage and settings buttons below the player's car" width="420">
+  <img src="docs/images/screenshot_garage.png" alt="Garage: arrows browse the cars, here the race car, with select and home buttons" width="420">
+  <img src="docs/images/screenshot_police_chase.png" alt="Sunset chase: two police cars drive after the player's car along the road" width="420">
+  <img src="docs/images/screenshot_game_over.png" alt="Game over at night: the police car rammed the player, with the restart button" width="420">
+</p>
+
 An arcade chase game: you drive through a city block while police cars spawn at the farthest
 point and hunt you down. Every hit costs health; the run ends when health reaches zero or the
 car falls into the water. A day/night cycle runs during the match, turning on street and car
@@ -87,8 +96,9 @@ python tools/unity_port/gen_godot.py                                     # scene
 levels); the scripts and the UI scenes are written by hand.
 
 Headless checks in `tools/godot/` (`drive_test.gd`, `bot_test.gd`, `props_test.gd`) drive the
-game and print what happens; `ui_test.gd` and `screenshot.gd` need a display and save
-screenshots:
+game and print what happens; `ui_test.gd`, `click_test.gd`, `screenshot.gd` and
+`readme_shots.gd` (the images above) need a display and save screenshots. Pass
+`--disable-vsync` to the display ones, or a hidden window renders a frame now and then:
 
 ```sh
 godot --headless --path . --fixed-fps 60 --script res://tools/godot/drive_test.gd
