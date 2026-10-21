@@ -1,0 +1,422 @@
+[gd_scene format=3]
+
+[ext_resource type="Theme" path="res://assets/ui/theme_ui.tres" id="1"]
+[ext_resource type="Script" path="res://scripts/ui/menu_panel.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/ui/ui_button.gd" id="3"]
+[ext_resource type="Texture2D" path="res://assets/textures/ui/txt_ui_icons.png" id="4"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx_button_release.ogg" id="5"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx_button_click.ogg" id="6"]
+[ext_resource type="FontFile" path="res://assets/fonts/luckiest_guy.ttf" id="7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1"]
+atlas = ExtResource("4")
+region = Rect2(882, 199, 212, 194)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2"]
+atlas = ExtResource("4")
+region = Rect2(1243, 192, 230, 234)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3"]
+atlas = ExtResource("4")
+region = Rect2(1612, 191, 226, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4"]
+atlas = ExtResource("4")
+region = Rect2(1991, 194, 216, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5"]
+atlas = ExtResource("4")
+region = Rect2(2418, 213, 150, 190)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="InitialMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1")
+script = ExtResource("2")
+enabled_on_start = true
+
+[node name="PlayButton" type="Button" parent="InitialMenu"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110
+offset_top = -407
+offset_right = 110
+offset_bottom = -187
+grow_horizontal = 2
+script = ExtResource("3")
+hover_sound = ExtResource("5")
+click_sound = ExtResource("6")
+
+[node name="Icon" type="TextureRect" parent="InitialMenu/PlayButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32
+offset_top = -50
+offset_right = 52
+offset_bottom = 50
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="InitialMenu/PlayButton"]
+
+[node name="GarageButton" type="Button" parent="InitialMenu"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -272
+offset_top = -331
+offset_right = -142
+offset_bottom = -201
+grow_horizontal = 2
+script = ExtResource("3")
+hover_sound = ExtResource("5")
+click_sound = ExtResource("6")
+
+[node name="Icon" type="TextureRect" parent="InitialMenu/GarageButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -35
+offset_right = 32.5
+offset_bottom = 35
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="InitialMenu/GarageButton"]
+
+[node name="SettingsButton" type="Button" parent="InitialMenu"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 142
+offset_top = -331
+offset_right = 272
+offset_bottom = -201
+grow_horizontal = 2
+script = ExtResource("3")
+hover_sound = ExtResource("5")
+click_sound = ExtResource("6")
+
+[node name="Icon" type="TextureRect" parent="InitialMenu/SettingsButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -35
+offset_right = 32.5
+offset_bottom = 35
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="InitialMenu/SettingsButton"]
+
+[node name="GarageMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1")
+script = ExtResource("2")
+enabled_on_start = false
+
+[node name="PreviousButton" type="Button" parent="GarageMenu"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -424
+offset_top = -55
+offset_right = -340
+offset_bottom = 55
+grow_horizontal = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1")
+script = ExtResource("3")
+hover_sound = ExtResource("5")
+click_sound = ExtResource("6")
+
+[node name="Icon" type="TextureRect" parent="GarageMenu/PreviousButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42
+offset_top = -55
+offset_right = 42
+offset_bottom = 55
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_5")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+self_modulate = Color(0.12941177, 0.81960785, 0.62352943, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GarageMenu/PreviousButton"]
+
+[node name="NextButton" type="Button" parent="GarageMenu"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 340
+offset_top = -55
+offset_right = 424
+offset_bottom = 55
+grow_horizontal = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1")
+script = ExtResource("3")
+hover_sound = ExtResource("5")
+click_sound = ExtResource("6")
+
+[node name="Icon" type="TextureRect" parent="GarageMenu/NextButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42
+offset_top = -55
+offset_right = 42
+offset_bottom = 55
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_5")
+expand_mode = 1
+stretch_mode = 5
+self_modulate = Color(0.12941177, 0.81960785, 0.62352943, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GarageMenu/NextButton"]
+
+[node name="SelectButton" type="Button" parent="GarageMenu"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110
+offset_top = -407
+offset_right = 110
+offset_bottom = -187
+grow_horizontal = 2
+script = ExtResource("3")
+hover_sound = ExtResource("5")
+click_sound = ExtResource("6")
+
+[node name="Icon" type="TextureRect" parent="GarageMenu/SelectButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42
+offset_top = -50
+offset_right = 42
+offset_bottom = 50
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GarageMenu/SelectButton"]
+
+[node name="ExitButton" type="Button" parent="GarageMenu"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -272
+offset_top = -331
+offset_right = -142
+offset_bottom = -201
+grow_horizontal = 2
+script = ExtResource("3")
+hover_sound = ExtResource("5")
+click_sound = ExtResource("6")
+
+[node name="Icon" type="TextureRect" parent="GarageMenu/ExitButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -35
+offset_right = 32.5
+offset_bottom = 35
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GarageMenu/ExitButton"]
+
+[node name="GameOverMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1")
+script = ExtResource("2")
+enabled_on_start = false
+
+[node name="Background" type="ColorRect" parent="GameOverMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="Title" type="Label" parent="GameOverMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -280.0
+offset_right = 400.0
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.91764706, 0.14901961, 0.25882354, 1)
+theme_override_fonts/font = ExtResource("7")
+theme_override_font_sizes/font_size = 150
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PrimaryButton" type="Button" parent="GameOverMenu"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110
+offset_top = -407
+offset_right = 110
+offset_bottom = -187
+grow_horizontal = 2
+script = ExtResource("3")
+hover_sound = ExtResource("5")
+click_sound = ExtResource("6")
+
+[node name="Icon" type="TextureRect" parent="GameOverMenu/PrimaryButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42
+offset_top = -50
+offset_right = 42
+offset_bottom = 50
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GameOverMenu/PrimaryButton"]
+
+[node name="HomeButton" type="Button" parent="GameOverMenu"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -272
+offset_top = -331
+offset_right = -142
+offset_bottom = -201
+grow_horizontal = 2
+script = ExtResource("3")
+hover_sound = ExtResource("5")
+click_sound = ExtResource("6")
+
+[node name="Icon" type="TextureRect" parent="GameOverMenu/HomeButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -35
+offset_right = 32.5
+offset_bottom = 35
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GameOverMenu/HomeButton"]

@@ -1,0 +1,159 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/car/car.gd" id="1"]
+[ext_resource type="Resource" path="res://resources/cars/ambulance.tres" id="2"]
+[ext_resource type="ArrayMesh" path="res://assets/models/kenney_car_kit/meshes/ambulance_body.res" id="3"]
+[ext_resource type="ArrayMesh" path="res://assets/models/kenney_car_kit/meshes/ambulance_door_left.res" id="4"]
+[ext_resource type="ArrayMesh" path="res://assets/models/kenney_car_kit/meshes/ambulance_door_right.res" id="5"]
+[ext_resource type="ArrayMesh" path="res://assets/models/kenney_car_kit/meshes/ambulance_wheel_back_right.res" id="6"]
+[ext_resource type="ArrayMesh" path="res://assets/models/kenney_car_kit/meshes/ambulance_wheel_back_left.res" id="7"]
+[ext_resource type="ArrayMesh" path="res://assets/models/kenney_car_kit/meshes/ambulance_wheel_front_right.res" id="8"]
+[ext_resource type="ArrayMesh" path="res://assets/models/kenney_car_kit/meshes/ambulance_wheel_front_left.res" id="9"]
+[ext_resource type="Script" path="res://scripts/car/car_lights.gd" id="10"]
+[ext_resource type="Material" path="res://assets/materials/mat_car_smoke.tres" id="11"]
+[ext_resource type="Script" path="res://scripts/car/car_smoke.gd" id="12"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx_car_engine.wav" id="13"]
+[ext_resource type="Script" path="res://scripts/car/car_engine_sound.gd" id="14"]
+[ext_resource type="Script" path="res://scripts/car/car_impacts.gd" id="15"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1"]
+points = PackedVector3Array(-0.35, 0.2, -1.21, -0.6208, 0.2999, -1.5708, -0.1251, 0.2124, -1.65, 0.3499, 0.2, -1.21, -0.65, 0.2, -0.61, -0.65, 0.2999, -1.5002, -0.65, 0.4, -1.6001, -0.55, 0.2999, -1.6001, -0.175, 0.2625, -1.65, 0.125, 0.2124, -1.65, 0.6206, 0.2999, -1.5708, 0.6499, 0.2, -0.61, -0.75, 0.2, 0.2467, -0.65, 1.6, -1.6001, -0.175, 0.3374, -1.65, 0.1749, 0.2625, -1.65, 0.6499, 0.4, -1.6001, 0.5499, 0.2999, -1.6001, 0.6499, 0.2999, -1.5002, 0.75, 0.2, 0.2467, -0.75, 0.2999, 0.2467, -0.75, 0.2, 0.7099, -0.4951, 1.8, -1.2002, -0.349, 1.6999, -1.4003, 0.6499, 1.6, -1.6001, -0.1251, 0.3875, -1.65, -0.75, 0.8999, 0.7729, -0.65, 1.6, 0.3968, 0.1749, 0.3374, -1.65, 0.75, 0.2999, 0.2467, 0.75, 0.2, 0.7099, -0.35, 0.2, 1.3099, -0.6208, 0.2999, 1.5205, -0.65, 0.2999, 1.4498, -0.75, 0.6999, 0.8728, 0.495, 1.8, -1.2002, -0.4951, 1.8, 0.0469, 0.3489, 1.6999, -1.4003, 0.125, 0.3875, -1.65, 0.6499, 1.6, 0.3968, 0.75, 0.8999, 0.7729, -0.75, 0.8999, 0.8728, -0.55, 0.7125, 1.4498, -0.6001, 1.6, 0.4468, 0.75, 0.6999, 0.8728, 0.6499, 0.2999, 1.4498, 0.6206, 0.2999, 1.5205, 0.3499, 0.2, 1.3099, -0.1251, 0.25, 1.6, -0.55, 0.2999, 1.5497, -0.6208, 0.4, 1.5205, -0.65, 0.4, 1.4498, 0.495, 1.8, 0.0469, 0.5999, 1.6, 0.4468, 0.5499, 0.7125, 1.4498, 0.75, 0.8999, 0.8728, -0.55, 0.6484, 1.4998, -0.45, 1.2999, 0.8998, -0.349, 1.4, 0.7999, 0.6499, 0.4, 1.4498, 0.6206, 0.4, 1.5205, 0.5499, 0.2999, 1.5497, 0.125, 0.25, 1.6, -0.175, 0.2999, 1.6, -0.55, 0.4, 1.5497, 0.3489, 1.4, 0.7999, 0.4499, 1.2999, 0.8998, 0.5499, 0.6484, 1.4998, -0.1251, 0.4249, 1.6, 0.5499, 0.4, 1.5497, 0.1749, 0.2999, 1.6, -0.175, 0.3749, 1.6, 0.125, 0.4249, 1.6, 0.1749, 0.3749, 1.6)
+
+[sub_resource type="QuadMesh" id="QuadMesh_2"]
+material = ExtResource("11")
+size = Vector2(0.4, 0.4)
+
+[node name="Ambulance" type="VehicleBody3D"]
+collision_layer = 4
+collision_mask = 63
+mass = 1000
+contact_monitor = true
+max_contacts_reported = 8
+script = ExtResource("1")
+parameter = ExtResource("2")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="Body" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -0.025)
+mesh = ExtResource("3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_1")
+
+[node name="DoorLeft" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 0.4, -1.475)
+mesh = ExtResource("4")
+
+[node name="DoorRight" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 0.4, -1.475)
+mesh = ExtResource("5")
+
+[node name="RRWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44, 0.39, -0.91)
+use_as_traction = false
+use_as_steering = false
+wheel_radius = 0.3
+wheel_rest_length = 0.25
+suspension_travel = 0.2
+suspension_stiffness = 30
+damping_compression = 3.5
+damping_relaxation = 4.5
+wheel_friction_slip = 3
+
+[node name="Model" type="MeshInstance3D" parent="RRWheel"]
+mesh = ExtResource("6")
+
+[node name="RLWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44, 0.39, -0.91)
+use_as_traction = false
+use_as_steering = false
+wheel_radius = 0.3
+wheel_rest_length = 0.25
+suspension_travel = 0.2
+suspension_stiffness = 30
+damping_compression = 3.5
+damping_relaxation = 4.5
+wheel_friction_slip = 3
+
+[node name="Model" type="MeshInstance3D" parent="RLWheel"]
+mesh = ExtResource("7")
+
+[node name="FRWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44, 0.39, 1.01)
+use_as_traction = true
+use_as_steering = true
+wheel_radius = 0.3
+wheel_rest_length = 0.25
+suspension_travel = 0.2
+suspension_stiffness = 30
+damping_compression = 3.5
+damping_relaxation = 4.5
+wheel_friction_slip = 3
+
+[node name="Model" type="MeshInstance3D" parent="FRWheel"]
+mesh = ExtResource("8")
+
+[node name="FLWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44, 0.39, 1.01)
+use_as_traction = true
+use_as_steering = true
+wheel_radius = 0.3
+wheel_rest_length = 0.25
+suspension_travel = 0.2
+suspension_stiffness = 30
+damping_compression = 3.5
+damping_relaxation = 4.5
+wheel_friction_slip = 3
+
+[node name="Model" type="MeshInstance3D" parent="FLWheel"]
+mesh = ExtResource("9")
+
+[node name="Lights" type="Node3D" parent="."]
+script = ExtResource("10")
+energy_at_night = 3
+
+[node name="SpotLight1" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(-1, 0, 0, 0, 0.9836, 0.1802, 0, 0.1802, -0.9836, -0.405, 0.65, 1.506)
+light_color = Color(0.9529, 1, 0.6745, 1)
+light_energy = 0.0
+spot_range = 3.0492
+spot_angle = 55.5535
+
+[node name="SpotLight" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(-1, 0, 0, 0, 0.9836, 0.1802, 0, 0.1802, -0.9836, 0.418, 0.65, 1.506)
+light_color = Color(0.9529, 1, 0.6745, 1)
+light_energy = 0.0
+spot_range = 3.0492
+spot_angle = 55.5535
+
+[node name="Smoke" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005, 0.816, 1.063)
+emitting = false
+amount = 24
+lifetime = 1.2
+local_coords = false
+mesh = SubResource("QuadMesh_2")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0.5, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.6
+scale_amount_min = 0.6
+scale_amount_max = 1.4
+script = ExtResource("12")
+health_threshold = 5
+
+[node name="EngineSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13")
+volume_db = -80.0
+script = ExtResource("14")
+min_pitch = 0.8
+max_pitch = 1.2
+
+[node name="Impacts" type="AudioStreamPlayer" parent="."]
+volume_db = -6.0206
+max_polyphony = 4
+script = ExtResource("15")
+min_collision_speed = 0.1
+ignored_layers = 2

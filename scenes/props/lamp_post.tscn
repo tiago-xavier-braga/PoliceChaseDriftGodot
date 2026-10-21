@@ -1,0 +1,67 @@
+[gd_scene format=3]
+
+[ext_resource type="AudioStream" path="res://assets/audio/sfx_impact_plate.ogg" id="1"]
+[ext_resource type="ArrayMesh" path="res://assets/models/kenney_city_kit_roads/meshes/light_curved.res" id="2"]
+[ext_resource type="Material" path="res://assets/materials/mat_lamp_dissolve.tres" id="3"]
+[ext_resource type="Script" path="res://scripts/props/lamp_post.gd" id="4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1"]
+size = Vector3(0.215, 0.419, 0.1806)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2"]
+size = Vector3(0.4, 1, 0.425)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3"]
+size = Vector3(0.215, 4.7227, 0.1806)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4"]
+size = Vector3(0.3978, 0.8275, 0.1806)
+
+[node name="LightCurved" type="RigidBody3D"]
+collision_layer = 32
+collision_mask = 63
+mass = 1000
+metadata/impact_sound = ExtResource("1")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("4")
+energy_at_night = 6
+transition_seconds = 1
+disable_delay = 10
+breaking_layers = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8771, -0.4803, 0, 0.4803, 0.8771, 0, 4.877, 0.105)
+shape = SubResource("BoxShape3D_1")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.494, 0)
+shape = SubResource("BoxShape3D_2")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.408, 0)
+shape = SubResource("BoxShape3D_3")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.6066, -0.795, 0, 0.795, 0.6066, 0, 5.1276, 0.3025)
+shape = SubResource("BoxShape3D_1")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.1612, -0.9869, 0, 0.9869, 0.1612, 0, 5.2777, 0.6333)
+shape = SubResource("BoxShape3D_1")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 5.3102, 1.191)
+shape = SubResource("BoxShape3D_4")
+
+[node name="Model" type="MeshInstance3D" parent="."]
+transform = Transform3D(-8, 0, 0, 0, 8, 0, 0, 0, -8, 0, 0, 0)
+mesh = ExtResource("2")
+material_override = ExtResource("3")
+
+[node name="SpotLight" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.4857, 0.8741, 0, -0.8741, -0.4857, 0, 5.151, 1.261)
+light_color = Color(0.9535, 1, 0.6745, 1)
+light_energy = 0.0
+spot_range = 10
+spot_angle = 50

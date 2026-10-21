@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CarParameter" format=3]
+
+[ext_resource type="Script" path="res://scripts/car/car_parameter.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "6e89696a"
+health = 15
+top_speed = 100
+acceleration = 1200
+brake_force = 2000
+steering_range = 55
+steering_range_at_max_speed = 30
+center_of_gravity_offset = -0.02

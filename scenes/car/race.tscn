@@ -1,0 +1,146 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/car/car.gd" id="1"]
+[ext_resource type="Resource" path="res://resources/cars/race.tres" id="2"]
+[ext_resource type="ArrayMesh" path="res://assets/models/kenney_car_kit/meshes/race_body.res" id="3"]
+[ext_resource type="ArrayMesh" path="res://assets/models/kenney_car_kit/meshes/race_wheel_front_right.res" id="4"]
+[ext_resource type="ArrayMesh" path="res://assets/models/kenney_car_kit/meshes/race_wheel_back_left.res" id="5"]
+[ext_resource type="ArrayMesh" path="res://assets/models/kenney_car_kit/meshes/race_wheel_back_right.res" id="6"]
+[ext_resource type="ArrayMesh" path="res://assets/models/kenney_car_kit/meshes/race_wheel_front_left.res" id="7"]
+[ext_resource type="Script" path="res://scripts/car/car_lights.gd" id="8"]
+[ext_resource type="Material" path="res://assets/materials/mat_car_smoke.tres" id="9"]
+[ext_resource type="Script" path="res://scripts/car/car_smoke.gd" id="10"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx_car_engine.wav" id="11"]
+[ext_resource type="Script" path="res://scripts/car/car_engine_sound.gd" id="12"]
+[ext_resource type="Script" path="res://scripts/car/car_impacts.gd" id="13"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1"]
+points = PackedVector3Array(0.6, 0.2, 0.1654, 0.6, 0.1, 0.1654, 0.6, 0.2, -0.4347, 0.55, 0.4885, 0.1654, 0.4499, 0.25, 1.2799, 0.6, 0.1, -0.4347, 0.4499, 0.1, 1.2799, 0.3499, 0.636, -1.2799, 0.55, 0.4885, 0.0654, 0.067, 0.7325, -0.1032, -0.45, 0.25, 1.2799, 0.3499, 0.1, -1.23, 0.3499, 0.15, -1.2799, -0.45, 0.1, 1.2799, -0.35, 0.636, -1.2799, 0.067, 0.7325, -0.2032, -0.0671, 0.7325, -0.1032, -0.5501, 0.4885, 0.1654, -0.6, 0.2, 0.1654, -0.35, 0.1, -1.23, -0.35, 0.15, -1.2799, -0.6, 0.1, 0.1654, -0.0671, 0.7325, -0.2032, -0.6, 0.2, -0.4347, -0.5501, 0.4885, 0.0654, -0.6, 0.1, -0.4347)
+
+[sub_resource type="QuadMesh" id="QuadMesh_2"]
+material = ExtResource("9")
+size = Vector2(0.4, 0.4)
+
+[node name="Race" type="VehicleBody3D"]
+collision_layer = 4
+collision_mask = 63
+mass = 1000
+contact_monitor = true
+max_contacts_reported = 8
+script = ExtResource("1")
+parameter = ExtResource("2")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="Body" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = ExtResource("3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_1")
+
+[node name="FRWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 0.39, 0.6399)
+use_as_traction = false
+use_as_steering = true
+wheel_radius = 0.34
+wheel_rest_length = 0.25
+suspension_travel = 0.2
+suspension_stiffness = 30
+damping_compression = 3.5
+damping_relaxation = 4.5
+wheel_friction_slip = 3
+
+[node name="Model" type="MeshInstance3D" parent="FRWheel"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
+mesh = ExtResource("4")
+
+[node name="RLWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0.39, -0.8801)
+use_as_traction = true
+use_as_steering = false
+wheel_radius = 0.34
+wheel_rest_length = 0.25
+suspension_travel = 0.2
+suspension_stiffness = 30
+damping_compression = 3.5
+damping_relaxation = 4.5
+wheel_friction_slip = 3
+
+[node name="Model" type="MeshInstance3D" parent="RLWheel"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
+mesh = ExtResource("5")
+
+[node name="RRWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 0.39, -0.8801)
+use_as_traction = true
+use_as_steering = false
+wheel_radius = 0.34
+wheel_rest_length = 0.25
+suspension_travel = 0.2
+suspension_stiffness = 30
+damping_compression = 3.5
+damping_relaxation = 4.5
+wheel_friction_slip = 3
+
+[node name="Model" type="MeshInstance3D" parent="RRWheel"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
+mesh = ExtResource("6")
+
+[node name="FLWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0.39, 0.6399)
+use_as_traction = false
+use_as_steering = true
+wheel_radius = 0.34
+wheel_rest_length = 0.25
+suspension_travel = 0.2
+suspension_stiffness = 30
+damping_compression = 3.5
+damping_relaxation = 4.5
+wheel_friction_slip = 3
+
+[node name="Model" type="MeshInstance3D" parent="FLWheel"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
+mesh = ExtResource("7")
+
+[node name="Lights" type="Node3D" parent="."]
+script = ExtResource("8")
+energy_at_night = 3
+
+[node name="SpotLight" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(-1, 0, 0, 0, 0.9834, -0.1816, 0, -0.1816, -0.9834, -0.003, 0.698, 0.049)
+light_color = Color(0.9529, 1, 0.6745, 1)
+light_energy = 0.0
+spot_range = 3.0492
+spot_angle = 55.5535
+
+[node name="Smoke" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.397, 0.965)
+emitting = false
+amount = 24
+lifetime = 1.2
+local_coords = false
+mesh = SubResource("QuadMesh_2")
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0.5, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.6
+scale_amount_min = 0.6
+scale_amount_max = 1.4
+script = ExtResource("10")
+health_threshold = 5
+
+[node name="EngineSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11")
+volume_db = -33.5556
+script = ExtResource("12")
+min_pitch = 0.8
+max_pitch = 1.2
+
+[node name="Impacts" type="AudioStreamPlayer" parent="."]
+volume_db = -6.0206
+max_polyphony = 4
+script = ExtResource("13")
+min_collision_speed = 0.1
+ignored_layers = 2

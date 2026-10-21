@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CarDatabase" format=3]
+
+[ext_resource type="Script" path="res://scripts/car/car_database.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/car/sedan_sports.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/car/race.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/car/ambulance.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/car/taxi.tscn" id="5"]
+
+[resource]
+script = ExtResource("1")
+cars = Array[PackedScene]([ExtResource("2"), ExtResource("3"), ExtResource("4"), ExtResource("5")])
