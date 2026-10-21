@@ -1,0 +1,27 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Optional clone of the Unity project, for tools/unity_port (its own git repo)
+/unity/
+
+# Exports (web build, zips)
+/build/
+/export/
+*.zip
+
+# Export credentials (export_presets.cfg itself stays tracked)
+export_credentials.cfg
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# VS Code local settings
+.vscode/
+
+# Python cache (tools/unity_port)
+__pycache__/
