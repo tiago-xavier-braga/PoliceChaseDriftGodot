@@ -89,6 +89,10 @@ Physics conversions (in `gen_godot.py` and `car.gd`):
 - The cutscene cars are disabled instances (no physics, no scripts) moved by the timeline, and
   every generated `AnimationPlayer` runs on the physics tick, so physics interpolation keeps
   them smooth.
+- The export keeps scenes as text (`editor/export/convert_text_resources_to_binary=false`):
+  Godot 4.7.2's binary conversion drops the `[connection]`s of `lvl_game.tscn` whose source is a
+  node inside the instanced UI scene, so the menu buttons did nothing in the web build.
+  `tools/godot/click_test.gd` clicks the real buttons to catch it.
 - A car under 0.3 m/s counts as stopped and drives off instead of braking: Unity's resting
   rigidbody reads exactly 0, Godot's wheels jitter around it.
 
