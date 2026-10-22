@@ -1,9 +1,7 @@
 # Police Chase: Drift
 
 <p align="center">
-  <img src="docs/images/screenshot_cutscene_chase.png" alt="Opening cutscene: a police officer chases a thief down the street" width="420">
   <img src="docs/images/screenshot_cutscene_hit.png" alt="Opening cutscene: the player's sports car runs the officer over" width="420">
-  <img src="docs/images/screenshot_menu.png" alt="Main menu over the city: play, garage and settings buttons below the player's car" width="420">
   <img src="docs/images/screenshot_garage.png" alt="Garage: arrows browse the cars, here the race car, with select and home buttons" width="420">
   <img src="docs/images/screenshot_police_chase.png" alt="Sunset chase: two police cars drive after the player's car along the road" width="420">
   <img src="docs/images/screenshot_game_over.png" alt="Game over at night: the police car rammed the player, with the restart button" width="420">
